@@ -10,12 +10,10 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { authReducer } from './auth/authSlice';
-import { contactsReducer } from './contacts/contactsSlice';
+import { authReducer } from './auth/slice';
+import { contactsReducer } from './contacts/slice';
+import { filterReducer } from './filrer/slice';
 
-// Параметром конфигураци для проверки сериализуемости всех actions, передаваемых
-// в хранилище, и исключает из проверки actions `FLUSH`, `REHYDRATE`, `PAUSE`, `PERSIST`,
-// `PURGE`, `REGISTER`.
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
@@ -24,18 +22,17 @@ const middleware = [
   }),
 ];
 
-// Параметры для persistReducer для сохранения токена из authSlice в локальное хранилище
 const authPersistConfig = {
   key: 'auth',
   storage,
   whitelist: ['token'],
 };
 
-// Глобальный стор
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     tasks: contactsReducer,
+    filter: filterReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
