@@ -1,21 +1,18 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
 
 import { addContact, fetchContacts } from 'redux/contacts/operations';
-import { selectContacts } from 'redux/contacts/selectors';
-
-import { useEffect } from 'react';
+import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
 import ContactsForm from 'components/ContactsForm';
-import Filter from 'components/Filter/Filter';
-import ContactsList from 'components/ContactList/ContactList';
-import { filterListContacts } from 'redux/filrer/selectors';
+import ContactsList from 'components/ContactList';
+import Filter from 'components/Filter';
+import { Wrapper } from './ContactsBar.styled';
 
 const ContactsBar = () => {
-  const contactList = useSelector(filterListContacts);
-  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
+  const allContacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -28,35 +25,35 @@ const ContactsBar = () => {
   };
 
   const checkСontact = newNumber => {
-    return contacts.some(contact => contact.number === newNumber);
+    console.log(allContacts);
+    return allContacts.some(contact => contact.number === newNumber);
   };
 
-  const addingContact = contact => {
-    if (!contact) {
-      return;
+  const onSubmit = (name, number) => {
+    if (checkСontact(number)) {
+      return notifiesAlert(number, name);
     }
 
-    if (checkСontact(contact.number)) {
-      notifiesAlert(contact.number, contact.name);
-      return;
-    }
-
-    contact.id = nanoid();
-
-    dispatch(addContact(contact));
-    toast.success(`Contact ${contact.name} added successfully`);
+    dispatch(addContact({ name, number }));
+    toast.success(`Contact ${name} added successfully`);
   };
 
   return (
-    <div>
+    <Wrapper>
       <h1>Phonebook</h1>
-      <ContactsForm onSubmit={addingContact}/>
-      <div>
-        <h2>Contacts</h2>
-        <Filter />
-      </div>
-      <ContactsList contactsList={contactList} />
-    </div>
+      <ContactsForm onSubmit={onSubmit} />
+
+      <h2>Contacts</h2>
+
+      {!isLoading && allContacts.length === 0 && <p>Contacts list is empty</p>}
+
+      {!isLoading && allContacts.length > 0 && (
+        <>
+          <Filter />
+          <ContactsList />
+        </>
+      )}
+    </Wrapper>
   );
 };
 

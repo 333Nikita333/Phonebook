@@ -1,7 +1,18 @@
 import { Form, Field, Formik } from 'formik';
 import styled from 'styled-components';
 
-export const FormikWrapper = styled(Formik)``;
+export const FormikWrapper = styled(Formik)`
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  text-align: center;
+  background-color: #0e8dbc;
+`;
 
 export const FormBox = styled(Form)`
   margin-left: auto;

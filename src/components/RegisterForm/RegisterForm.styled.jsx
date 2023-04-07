@@ -1,7 +1,18 @@
 import { Form, Field, Formik } from 'formik';
 import styled from 'styled-components';
 
-export const FormikWrapper = styled(Formik)``;
+export const FormikWrapper = styled(Formik)`
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  text-align: center;
+  background-color: #0e8dbc;
+`;
 
 export const FormBox = styled(Form)`
   margin-left: auto;
@@ -26,7 +37,7 @@ export const FormBox = styled(Form)`
   }
 `;
 
-export const InputName = styled(Field)`
+export const InputLogin = styled(Field)`
   padding: 0 20px;
   margin-bottom: 10px;
   background: #e9eff6;
@@ -38,9 +49,9 @@ export const InputName = styled(Field)`
   font-size: 18px;
 `;
 
-export const InputEmail = styled(InputName)``;
+export const InputEmail = styled(InputLogin)``;
 
-export const InputPassword = styled(InputName)``;
+export const InputPassword = styled(InputLogin)``;
 
 export const Button = styled.button`
   --color: #560bad;

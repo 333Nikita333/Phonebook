@@ -4,7 +4,7 @@ import {
   fetchContacts,
   addContact,
   deleteContact,
-  // patchContacts,
+  patchContacts,
 } from './operations';
 
 const handlePending = state => {
@@ -56,37 +56,16 @@ const contactsSlice = createSlice({
       })
       .addCase(deleteContact.rejected, handleRejected)
       ///////////////////////////////////////////////////
-      // .addCase(patchContacts.pending, handlePending)
-      // .addCase(patchContacts.fulfilled, (state, action) => {
-      //   state.isLoading = false;
-      //   state.error = null;
-      //   const index = state.items.findIndex(
-      //     contact => contact.id === action.payload.id
-      //   );
-      //   state.items.splice(index, 1, action.payload);
-      // })
-      // .addCase(patchContacts.rejected, handleRejected),
-  // .addCase(patchContacts.pending, handlePending)
-  // .addCase(patchContacts.fulfilled, (state, action) => {
-  //   state.isLoading = false;
-  //   state.error = null;
-  //   const index = state.items.findIndex(
-  //     contact => contact.id === action.payload.id
-  //   );
-  //   state.items.splice(index, 1, action.payload);
-  // })
-  // .addCase(patchContactsct.rejected, handleRejected),
+      .addCase(patchContacts.pending, handlePending)
+      .addCase(patchContacts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.items.findIndex(
+          contact => contact.id === action.payload.id
+        );
+        state.items.splice(index, 1, action.payload);
+      })
+      .addCase(patchContacts.rejected, handleRejected),
 });
 
 export const contactsReducer = contactsSlice.reducer;
-
-// const extraActions = [fetchContacts, addContact, deleteContact];
-
-// .addMatcher(
-//   isAnyOf(...extraActions.map(action => action.pending)),
-//   handlePending
-// )
-// .addMatcher(
-//   isAnyOf(...extraActions.map(action => action.rejected)),
-//   handleRejected
-// ),

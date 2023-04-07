@@ -1,38 +1,34 @@
-// import { useState } from 'react';
-import {
-  useDispatch,
-  // useSelector
-} from 'react-redux';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import { toast } from 'react-hot-toast';
+import { AiOutlineDelete } from 'react-icons/ai';
 
-// import { AiOutlineDelete } from 'react-icons/ai';
-// import { toast } from 'react-hot-toast';
-// import PropTypes from 'prop-types';
-
-// import { selectError, selectIsLoading } from 'redux/contacts/contactsSelectors';
+import { selectError, selectIsLoading } from 'redux/contacts/selectors';
 import { deleteContact } from 'redux/contacts/operations';
 import {
-  // Button,
+  Button,
   ContactInfo,
   Name,
   Number,
-  // Spinner,
+  Spinner,
   UserIcon,
 } from './ContactListItem.styled';
 
 const ContactListItem = ({ id, name, number }) => {
-  // const [contactId, setContactId] = useState(null);
+  const [contactId, setContactId] = useState(null);
 
   const dispatch = useDispatch();
-  // const isLoading = useSelector(selectIsLoading);
-  // const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   const handleDelete = () => {
     dispatch(deleteContact(id));
-    // setContactId(contact.id);
+    setContactId(id);
 
-    // if (!error) {
-    //   toast.success(`Contact ${contact.name} successfully deleted`);
-    // }
+    if (!error) {
+      toast.success(`Contact ${name} successfully deleted`);
+    }
   };
 
   return (
@@ -41,24 +37,23 @@ const ContactListItem = ({ id, name, number }) => {
       <ContactInfo>
         <Name>{name}</Name>
         <Number>{number}</Number>
-        <button type="button" onClick={handleDelete}>
-          Delete
-        </button>
       </ContactInfo>
 
-      {/* {isLoading && contactId === contact.id ? (
+      {isLoading && contactId === id ? (
         <Spinner size={40} />
       ) : (
         <Button type="button" onClick={handleDelete} disabled={isLoading}>
           <AiOutlineDelete size={20} />
         </Button>
-      )} */}
+      )}
     </>
   );
 };
 
-// ContactListItem.propTypes = {
-//   contact: PropTypes.object.isRequired,
-// };
+ContactListItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+};
 
 export default ContactListItem;
