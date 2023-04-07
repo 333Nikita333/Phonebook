@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   minheight: calc(100vh - 50px);
   display: flex;
   alignitems: center;

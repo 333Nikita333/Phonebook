@@ -6,13 +6,12 @@ import { Suspense } from 'react';
 const Layout = () => {
   return (
     <>
-      <div>
-        <AppBar />
+      <AppBar />
 
-        <Suspense fallback={null}>
-          <Outlet />
-        </Suspense>
-      </div>
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
+
       <Toaster position="top-center" reverseOrder={false} />
     </>
   );

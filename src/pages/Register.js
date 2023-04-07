@@ -3,12 +3,12 @@ import RegisterForm from 'components/RegisterForm';
 
 const Register = () => {
   return (
-    <div>
+    <main>
       <Helmet>
         <title>Registration</title>
       </Helmet>
       <RegisterForm />
-    </div>
+    </main>
   );
 };
 
