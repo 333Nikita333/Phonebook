@@ -9,15 +9,18 @@ const ContactsList = ({ contactList }) => {
 
   return (
     <div>
-      <List>
-        {isLoading && <p>Loading...</p>}
-        {error && <p>{error.message}</p>}
-        {contactList.map(({ id, name, number }) => (
-          <Item key={id} >
-            <ContactListItem id={id} name={name} number={number} />
-          </Item>
-        ))}
-      </List>
+      {error && <p>{error.message}</p>}
+      {isLoading && <p>Loading...</p>}
+      {contactList.length === 0 && !isLoading && <p>Contacts list is empty</p>}
+      {contactList.length > 0 && (
+        <List>
+          {contactList.map(({ id, name, number }) => (
+            <Item key={id}>
+              <ContactListItem id={id} name={name} number={number} />
+            </Item>
+          ))}
+        </List>
+      )}
     </div>
   );
 };

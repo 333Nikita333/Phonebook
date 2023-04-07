@@ -3,18 +3,16 @@ import { Toaster } from 'react-hot-toast';
 import AppBar from 'components/AppBar';
 import { Suspense } from 'react';
 
-import { Wrapper } from './Layout.styled';
-
 const Layout = () => {
   return (
     <>
-      <Wrapper>
+      <div>
         <AppBar />
 
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
-      </Wrapper>
+      </div>
       <Toaster position="top" reverseOrder={false} />
     </>
   );
