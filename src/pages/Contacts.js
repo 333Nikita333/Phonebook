@@ -6,13 +6,13 @@ const Contacts = () => {
   const { isLoading } = useAuth();
 
   return (
-    <main>
+    <>
       <Helmet>
-        <title>Your contacts</title>
+        <title>Contacts</title>
       </Helmet>
       {isLoading && <b>Request in progress...</b>}
       <ContactsBar />
-    </main>
+    </>
   );
 };
 

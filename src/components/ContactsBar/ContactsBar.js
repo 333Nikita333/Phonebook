@@ -3,16 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast';
 
 import { addContact, fetchContacts } from 'redux/contacts/operations';
-import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
+import { selectContacts, selectError, selectIsLoading } from 'redux/contacts/selectors';
 import ContactsForm from 'components/ContactsForm';
 import ContactsList from 'components/ContactList';
 import Filter from 'components/Filter';
-import { Wrapper } from './ContactsBar.styled';
+import { Message, Title, Wrapper, Text } from './ContactsBar.styled';
 
 const ContactsBar = () => {
   const dispatch = useDispatch();
   const allContacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
+const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -25,7 +26,6 @@ const ContactsBar = () => {
   };
 
   const checkСontact = newNumber => {
-    console.log(allContacts);
     return allContacts.some(contact => contact.number === newNumber);
   };
 
@@ -33,21 +33,26 @@ const ContactsBar = () => {
     if (checkСontact(number)) {
       return notifiesAlert(number, name);
     }
-
+    console.log(isLoading);
+    
     dispatch(addContact({ name, number }));
     toast.success(`Contact ${name} added successfully`);
   };
 
   return (
     <Wrapper>
-      <h1>Phonebook</h1>
+      <Title>Phonebook</Title>
       <ContactsForm onSubmit={onSubmit} />
 
-      <h2>Contacts</h2>
+      <Text>Your contacts</Text>
 
-      {!isLoading && allContacts.length === 0 && <p>Contacts list is empty</p>}
+      {isLoading && !error && <b>Request in progress...</b>}
 
-      {!isLoading && allContacts.length > 0 && (
+      {!isLoading && allContacts.length === 0 && (
+        <Message>Contacts list is empty</Message>
+      )}
+
+      {allContacts.length > 0 && (
         <>
           <Filter />
           <ContactsList />

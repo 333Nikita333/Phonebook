@@ -4,19 +4,28 @@ import styled from 'styled-components';
 export const FormikWrapper = styled(Formik)``;
 
 export const FormBox = styled(Form)`
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
-  width: 260px;
+  max-width: 400px;
 
   background: white;
   border-radius: 30px;
+  
   & label {
     display: flex;
     flex-direction: column;
     width: 100%;
+    
     & span {
-      margin-bottom: 15px;
+      margin-bottom: 5px;
+      
+      font-size: 20px;
       text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb,
         0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1),
         0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3),
@@ -28,7 +37,6 @@ export const FormBox = styled(Form)`
 
 export const InputName = styled(Field)`
   padding: 0 20px;
-  margin-bottom: 10px;
   background: #e9eff6;
   line-height: 40px;
   border-width: 0;
@@ -36,6 +44,12 @@ export const InputName = styled(Field)`
   font-family: 'Roboto', sans-serif;
   font-style: italic;
   font-size: 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+  &:focus {
+    outline: none;
+    border: solid 2px #560bad;
+  }
 `;
 
 export const InputTel = styled(InputName)``;
@@ -50,7 +64,6 @@ export const Button = styled.button`
   width: 8em;
   height: 2.6em;
   line-height: 2.5em;
-  margin: 20px;
   position: relative;
   overflow: hidden;
   border: 2px solid var(--color);
@@ -60,6 +73,7 @@ export const Button = styled.button`
   border-radius: 6px;
   font-weight: 500;
   color: var(--color);
+  
   &:before {
     content: '';
     position: absolute;
@@ -85,4 +99,8 @@ export const Button = styled.button`
     background: #3a0ca3;
     transition: background 0s;
   }
+`;
+
+export const Message = styled.p`
+  color: red;
 `;
