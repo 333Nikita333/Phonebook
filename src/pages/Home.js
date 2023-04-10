@@ -1,10 +1,12 @@
-import { useAuth } from 'hooks';
-import { Helmet } from 'react-helmet';
-import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
+import { useAuth } from 'hooks';
+import { Link, NavLink } from 'react-router-dom';
 
 const TitleWrapper = styled.div`
-  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
 `;
 

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { toast } from 'react-hot-toast';
 import { AiOutlineDelete } from 'react-icons/ai';
-
 import { selectError, selectIsLoading } from 'redux/contacts/selectors';
 import { deleteContact } from 'redux/contacts/operations';
 import {

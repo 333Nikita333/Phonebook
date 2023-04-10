@@ -56,32 +56,34 @@ export const InputTel = styled(InputName)``;
 
 export const Button = styled.button`
   --color: #560bad;
-  padding: 5px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: inherit;
+  padding: 5px;
   width: 8em;
   height: 2.6em;
-  line-height: 2.5em;
-  position: relative;
-  overflow: hidden;
-  border: 2px solid var(--color);
-  transition: color 0.5s;
-  z-index: 1;
+  
+  font-family: inherit;
   font-size: 17px;
-  border-radius: 6px;
   font-weight: 500;
+  line-height: 2.5em;
+  border: 2px solid var(--color);
+  border-radius: 6px;
   color: var(--color);
+  
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: color 0.5s;
   
   &:before {
     content: '';
-    position: absolute;
-    z-index: -1;
-    background: var(--color);
     height: 150px;
     width: 200px;
     border-radius: 50%;
+    background: var(--color);
+    position: absolute;
+    z-index: -1;
   }
   &:hover {
     color: #fff;

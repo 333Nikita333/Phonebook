@@ -1,7 +1,7 @@
-import { useAuth } from 'hooks';
-import { Nav, Link } from './Navigation.styled';
 import { AiFillHome } from 'react-icons/ai';
 import { GiBookmarklet } from 'react-icons/gi';
+import { useAuth } from 'hooks/useAuth';
+import { Nav, Link } from './Navigation.styled';
 
 const Navigation = () => {
   const { isLoggedIn } = useAuth();

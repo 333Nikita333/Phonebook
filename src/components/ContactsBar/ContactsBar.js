@@ -1,9 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast';
-
 import { addContact, fetchContacts } from 'redux/contacts/operations';
-import { selectContacts, selectError, selectIsLoading } from 'redux/contacts/selectors';
+import {
+  selectContacts,
+  selectError,
+  selectIsLoading,
+} from 'redux/contacts/selectors';
+import { useLoaders } from 'hooks';
 import ContactsForm from 'components/ContactsForm';
 import ContactsList from 'components/ContactList';
 import Filter from 'components/Filter';
@@ -13,7 +17,8 @@ const ContactsBar = () => {
   const dispatch = useDispatch();
   const allContacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
-const error = useSelector(selectError);
+  const error = useSelector(selectError);
+  const { LoaderBig } = useLoaders();
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -33,26 +38,23 @@ const error = useSelector(selectError);
     if (checkСontact(number)) {
       return notifiesAlert(number, name);
     }
-    console.log(isLoading);
-    
+
     dispatch(addContact({ name, number }));
     toast.success(`Contact ${name} added successfully`);
   };
 
   return (
-    <Wrapper>
+    <Wrapper isHeight={allContacts.length > 0}>
       <Title>Phonebook</Title>
       <ContactsForm onSubmit={onSubmit} />
 
       <Text>Your contacts</Text>
 
-      {isLoading && !error && <b>Request in progress...</b>}
+      {!error && isLoading && <LoaderBig />}
 
-      {!isLoading && allContacts.length === 0 && (
+      {!error && !isLoading && allContacts.length === 0 ? (
         <Message>Contacts list is empty</Message>
-      )}
-
-      {allContacts.length > 0 && (
+      ) : (
         <>
           <Filter />
           <ContactsList />
