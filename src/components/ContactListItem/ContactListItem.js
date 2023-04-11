@@ -45,11 +45,11 @@ const ContactListItem = ({ id, name, number }) => {
         <Name>{name}</Name>
         <Number>{number}</Number>
       </ContactInfo>
+      
       <BtnWrapper>
         <ButtonChange type="button" onClick={toggleModal}>
           <BsThreeDots size={20} />
         </ButtonChange>
-
         {isLoading && contactId === id ? (
           <Spinner size={40} />
         ) : (
@@ -62,6 +62,7 @@ const ContactListItem = ({ id, name, number }) => {
           </ButtonDelete>
         )}
       </BtnWrapper>
+      
       {showModal && (
         <Modal onCloseModal={toggleModal} id={id} name={name} number={number} />
       )}
