@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast } from 'react-hot-toast';
+import { errorNotification, successNotification } from 'hooks/useToasts';
 import {
   clearAuthHeader,
   contactApi,
@@ -15,10 +15,10 @@ export const register = createAsyncThunk(
     try {
       const response = await axios.post('/users/signup', credentials);
       setAuthHeader(response.data.token);
-      toast.success('Successful registration');
+      successNotification('Successful registration');
       return response.data;
     } catch (error) {
-      toast.error(`${error.response.data.message} Please try again.`);
+      errorNotification(`${error.response.data.message} Please try again.`);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -30,10 +30,11 @@ export const logIn = createAsyncThunk(
     try {
       const response = await axios.post('/users/login', credentials);
       setAuthHeader(response.data.token);
-      toast.success('Successful authorization');
+
+      successNotification('Successful authorization');
       return response.data;
     } catch (error) {
-      toast.error(
+      errorNotification(
         `Something went wrong. Invalid login or password. Please try again. ❌`
       );
       return thunkAPI.rejectWithValue(error.message);
@@ -45,8 +46,9 @@ export const logOut = createAsyncThunk('/users/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
     clearAuthHeader();
-    toast.success('Successful logout');
+    successNotification('Successful logout');
   } catch (error) {
+    errorNotification('Something went wrong. Please try again. ❌');
     return thunkAPI.rejectWithValue(error.message);
   }
 });

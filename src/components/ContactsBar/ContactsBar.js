@@ -1,23 +1,16 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
 import { addContact, fetchContacts } from 'redux/contacts/operations';
-import {
-  selectContacts,
-  selectError,
-  selectIsLoading,
-} from 'redux/contacts/selectors';
-import { useLoaders } from 'hooks';
+import { useContacts, useLoaders } from 'hooks';
 import ContactsForm from 'components/ContactsForm';
 import ContactsList from 'components/ContactList';
 import Filter from 'components/Filter';
 import { Message, Title, Wrapper, Text } from './ContactsBar.styled';
+import { errorNotification, successNotification } from 'hooks/useToasts';
 
 const ContactsBar = () => {
   const dispatch = useDispatch();
-  const allContacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const { allContacts, isLoading, error } = useContacts();
   const { LoaderBig } = useLoaders();
 
   useEffect(() => {
@@ -25,7 +18,7 @@ const ContactsBar = () => {
   }, [dispatch]);
 
   const notifiesAlert = (numberContact, nameContact) => {
-    return toast.error(
+    return errorNotification(
       `${numberContact} is already in contacts under the name ${nameContact}.`
     );
   };
@@ -40,7 +33,7 @@ const ContactsBar = () => {
     }
 
     dispatch(addContact({ name, number }));
-    toast.success(`Contact ${name} added successfully`);
+    successNotification(`Contact ${name} added successfully`);
   };
 
   return (

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const LoaderBox = styled.div`
   position: absolute;
+  z-index: 5;
   top: 0;
   left: 0;
   width: 100%;
