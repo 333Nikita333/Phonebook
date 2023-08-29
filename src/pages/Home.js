@@ -8,6 +8,7 @@ const TitleWrapper = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 10px;
 `;
 
 const Container = styled.div`
@@ -20,7 +21,7 @@ const Container = styled.div`
   padding: 10px;
   max-width: 400px;
 
-  font-size: 35px;
+  font-size: calc(var(--index) * 3);
   border: solid 1px #000;
   border-radius: 15px;
   background: rgb(227, 227, 227);
@@ -28,6 +29,10 @@ const Container = styled.div`
     rgb(254, 254, 254) -16px -16px 32px;
   animation: 0.5s ease 0s 1 normal none running jgQpwH;
 
+  @media screen and (min-width: 481px) {
+    font-size: 30px;
+  }
+  
   & a {
     padding: 5px;
     border: solid 1px #000;

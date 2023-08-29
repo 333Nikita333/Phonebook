@@ -11,16 +11,6 @@ const fadeIn = keyframes`
   }
 `;
 
-export const Title = styled.h2`
-  display: block;
-
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: bold;
-  font-size: 30px;
-  color: #000;
-`;
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -30,7 +20,9 @@ export const Container = styled.div`
   height: 100vh;
   max-width: 500px;
   margin: 0 auto;
+  padding: 10px;
 `;
+
 
 export const FormBox = styled(Form)`
   display: flex;
@@ -39,17 +31,35 @@ export const FormBox = styled(Form)`
   width: 100%;
   padding: 20px;
   
+  font-size: calc(var(--index) * 2);
   border-radius: 15px;
   background: #e3e3e3;
   box-shadow: 16px 16px 32px #c8c8c8, -16px -16px 32px #fefefe;
   animation: ${fadeIn} 0.5s ease;
 `;
 
+export const Title = styled.h2`
+  display: block;
+
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: #000;
+  
+  @media (min-width: 481px) {
+    font-size: 30px;
+  }
+`;
+
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
-  margin: 20px 0;
+  margin: 10px 0;
   width: 100%;
+  
+  @media (min-width: 481px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const Text = styled.span`
@@ -58,8 +68,6 @@ export const Text = styled.span`
   align-items: end;
   justify-content: center;
   margin-bottom: 10px;
-  
-  font-size: 1.2rem;
 `;
 
 export const Input = styled(Field)`
@@ -68,7 +76,6 @@ export const Input = styled(Field)`
   
   border: none;
   border-radius: 10px;
-  font-size: 1.2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.2s ease;
   
@@ -86,23 +93,29 @@ export const ErrorMessageText = styled.p`
   margin-top: 10px;
   
   color: red;
-  font-size: 17px;
+  
+  @media (min-width: 481px) {
+    font-size: 17px;
+  }
 `;
 
 export const SubmitButton = styled.button`
-  width: 50%;
-  height: 45px;
-  margin-top: 10px;
+  height: calc(var(--index) * 4);
   cursor: pointer;
   
-  font-size: 20px;
   letter-spacing: 2px;
   text-transform: uppercase;
   border: 2px solid #000;
   background-color: transparent;
   border-radius: 5px;
   transition: 0.5s;
-
+  
+  @media (min-width: 481px) {
+    font-size: 20px;
+    width: 50%;
+    height: 45px;
+  }
+  
   &:hover {
     background-color: rgb(0, 0, 0);
     color: white;

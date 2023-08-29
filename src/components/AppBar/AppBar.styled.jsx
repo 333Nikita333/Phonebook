@@ -3,13 +3,18 @@ import styled from 'styled-components';
 export const Header = styled.header`
   position: sticky;
   top: -1px;
-  padding: 15px 30px;
+  padding: 10px 20px;
   display: flex;
   gap: 20px;
   justify-content: space-between;
   align-items: center;
-  font-size: 30px;
+  font-size: calc(var(--index) * 2);
   background: rgba(24, 20, 20, 0.987);
+
+  @media (min-width: 481px) {
+    padding: 12px 25px;
+    font-size: 26px;
+  }
 
   & a {
     color: #fff;
