@@ -17,7 +17,7 @@ const Filter = () => {
       <InputFilter
         type="text"
         name="filter"
-        placeholder='Search...'
+        placeholder="Search..."
         value={filter}
         onChange={handleInputChange}
       />

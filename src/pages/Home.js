@@ -32,7 +32,7 @@ const Container = styled.div`
   @media screen and (min-width: 481px) {
     font-size: 30px;
   }
-  
+
   & a {
     padding: 5px;
     border: solid 1px #000;

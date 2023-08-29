@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import GlobalStyle from 'GlobalStyles';
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
@@ -20,4 +19,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Provider>
   </React.StrictMode>
 );
-

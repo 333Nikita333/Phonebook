@@ -19,4 +19,3 @@ export const useAuth = () => {
     isLoading,
   };
 };
-

@@ -23,6 +23,7 @@ export const Container = styled.div`
   padding: 10px;
 `;
 
+
 export const FormBox = styled(Form)`
   display: flex;
   align-items: center;
@@ -31,6 +32,7 @@ export const FormBox = styled(Form)`
   padding: 20px;
   
   font-size: calc(var(--index) * 2);
+  border-radius: 15px;
   background: #e3e3e3;
   box-shadow: 16px 16px 32px #c8c8c8, -16px -16px 32px #fefefe;
   animation: ${fadeIn} 0.5s ease;
@@ -38,17 +40,18 @@ export const FormBox = styled(Form)`
 
 export const Title = styled.h2`
   display: block;
-
+  margin-bottom: 15px;
+  
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: bold;
-  font-size: 30px;
   color: #000;
   
   @media (min-width: 481px) {
     font-size: 30px;
   }
 `;
+
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
@@ -58,7 +61,6 @@ export const Label = styled.label`
   @media (min-width: 481px) {
     font-size: 1.2rem;
   }
-  
 `;
 
 export const Text = styled.span`
@@ -75,7 +77,6 @@ export const Input = styled(Field)`
   
   border: none;
   border-radius: 10px;
-  font-size: 1.2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.2s ease;
   
@@ -103,18 +104,18 @@ export const SubmitButton = styled.button`
   height: calc(var(--index) * 4);
   cursor: pointer;
   
-  font-size: 20px;
   letter-spacing: 2px;
   text-transform: uppercase;
   border: 2px solid #000;
   background-color: transparent;
   border-radius: 5px;
   transition: 0.5s;
-
+  
   @media (min-width: 481px) {
     font-size: 20px;
     width: 50%;
     height: 45px;
+    margin-top: 10px;
   }
   
   &:hover {

@@ -50,7 +50,11 @@ const ContactsForm = ({ onSubmit }) => {
         </label>
         <label>
           <span>Phone</span>
-          <InputTel placeholder="Enter contact phone" type="tel" name="number" />
+          <InputTel
+            placeholder="Enter contact phone"
+            type="tel"
+            name="number"
+          />
           <ErrorMessage component={Message} name="number" />
         </label>
         <Button type="submit">Add contact</Button>

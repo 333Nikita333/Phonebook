@@ -4,7 +4,7 @@ export const LabelFilter = styled.label`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  
+
   & span {
     margin-right: 10px;
     padding: 5px;
@@ -26,7 +26,7 @@ export const InputFilter = styled.input`
   font-style: italic;
   font-size: 18px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
-  
+
   &:focus {
     outline: none;
     border: solid 2px #560bad;

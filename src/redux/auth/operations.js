@@ -18,7 +18,15 @@ export const register = createAsyncThunk(
       successNotification('Successful registration');
       return response.data;
     } catch (error) {
-      errorNotification(`${error.response.data.message} Please try again.`);
+      console.log(error.response);
+      if (error.response.data.message) {
+        errorNotification(
+          `${error.response.data.message} Please try again. ❌`
+        );
+      } else {
+        errorNotification(`Something went wrong. Please enter another email. ❌`);
+      }
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }

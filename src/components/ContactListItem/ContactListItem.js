@@ -45,7 +45,7 @@ const ContactListItem = ({ id, name, number }) => {
         <Name>{name}</Name>
         <Number>{number}</Number>
       </ContactInfo>
-      
+
       <BtnWrapper>
         <ButtonChange type="button" onClick={toggleModal}>
           <BsThreeDots size={20} />
@@ -62,7 +62,7 @@ const ContactListItem = ({ id, name, number }) => {
           </ButtonDelete>
         )}
       </BtnWrapper>
-      
+
       {showModal && (
         <Modal onCloseModal={toggleModal} id={id} name={name} number={number} />
       )}
