@@ -23,7 +23,7 @@ export const FormBox = styled(Form)`
     width: 100%;
 
     & span {
-      margin-bottom: 5px;
+      margin-bottom: 10px;
 
       font-size: 20px;
       text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb,

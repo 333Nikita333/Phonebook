@@ -19,9 +19,9 @@ export const List = styled.ul`
 
 export const Item = styled.li`
   display: flex;
-  flex-basis: calc((100% - 20px - 60px) / 3);
   align-items: center;
   gap: 10px;
+  width: 100%;
   justify-content: space-between;
   margin-bottom: 0.25rem;
   padding: 10px;
@@ -33,4 +33,8 @@ export const Item = styled.li`
     rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
     rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
     rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+  @media (min-width: 481px) {
+    flex-basis: calc((100% - 20px - 60px) / 3);
+  }
 `;

@@ -24,7 +24,7 @@ const UserMenu = () => {
         Welcome, {user.email}
       </UserName>
       <Button type="button" onClick={onLogOut}>
-        <CiLogout size={25} />
+        <CiLogout />
       </Button>
     </Wrapper>
   );

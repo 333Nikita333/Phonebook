@@ -5,6 +5,10 @@ export const LabelFilter = styled.label`
   justify-content: center;
   align-items: center;
 
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+
   & span {
     margin-right: 10px;
     padding: 5px;
@@ -13,6 +17,10 @@ export const LabelFilter = styled.label`
     background: #98e063;
     border-radius: 15px;
     text-shadow: 3px 5px 2px #474747;
+
+    @media (max-width: 480px) {
+      margin-bottom: 10px;
+    }
   }
 `;
 

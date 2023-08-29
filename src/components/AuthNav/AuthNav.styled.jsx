@@ -6,11 +6,9 @@ export const Wrapper = styled.div`
   gap: 30px;
 
   @media (max-width: 480px) {
-    gap: 20px;
-  }
-
-  @media (min-width: 481px) and (max-width: 768px) {
-    gap: 25px;
+    width: 100%;
+    justify-content: space-around;
+    gap: 10px;
   }
 `;
 export const AuthLink = styled(NavLink)`

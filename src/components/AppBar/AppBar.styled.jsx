@@ -5,7 +5,8 @@ export const Header = styled.header`
   top: -1px;
   padding: 10px 20px;
   display: flex;
-  gap: 20px;
+  gap: 10px;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   font-size: calc(var(--index) * 2);
@@ -14,6 +15,8 @@ export const Header = styled.header`
   @media (min-width: 481px) {
     padding: 12px 25px;
     font-size: 26px;
+    gap: 20px;
+    flex-direction: row;
   }
 
   & a {
