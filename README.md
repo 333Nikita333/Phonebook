@@ -1,6 +1,6 @@
 # Phonebook React App
 
-Phonebook is a React application for managing a private collection of contacts. It allows users to perform operations such as creating, deleting, and editing contacts. The backend API supporting the app is documented [here](https://connections-api.herokuapp.com/docs). It provides all the necessary operations on the contact collection, including search by contact name. The backend also handles user registration and login using JWT (JSON Web Tokens).
+Phonebook is a React application for managing a private collection of contacts. It allows users to perform operations such as creating, deleting, and editing contacts. The backend API supporting the app is documented here - [DOCUMENTATION](https://connections-api.herokuapp.com/docs). It provides all the necessary operations on the contact collection, including search by contact name. The backend also handles user registration and login using JWT (JSON Web Tokens).
 
 ## Table of Contents
 
